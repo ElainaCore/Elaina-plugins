@@ -251,5 +251,44 @@
     "tags": [
       "工具"
     ]
+},
+  {
+    "name": "群发插件",
+    "type": "plugin",
+    "author": "miaolik",
+    "description": "群发消息，支持群聊和私聊，含 Web 面板",
+    "version": "1.1.0",
+    "category": "工具",
+    "github": "https://github.com/miaolik/plugin-qunfa",
+    "branch": "main",
+    "tags": [
+      "工具"
+    ]
+},
+  {
+    "name": "自定义API",
+    "type": "plugin",
+    "author": "miaolik",
+    "description": "自定义API，支持群聊和私聊，含 Web 面板",
+    "version": "1.1.0",
+    "category": "工具",
+    "github": "https://github.com/miaolik/plugin-API",
+    "branch": "main",
+    "tags": [
+      "工具"
+    ]
+},
+  {
+    "name": "记账2.0",
+    "type": "plugin",
+    "author": "miaolik",
+    "description": "记录日常开支，支持群聊和私聊",
+    "version": "1.1.0",
+    "category": "工具",
+    "github": "https://github.com/miaolik/plugin-jz",
+    "branch": "记账2.0.py",
+    "tags": [
+      "工具"
+    ]
 }
 ]
