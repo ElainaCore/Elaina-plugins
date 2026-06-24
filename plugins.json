@@ -123,7 +123,7 @@
     "type": "plugin",
     "author": "铁蛋",
     "description": "基于 C++ 的 LGTBot 游戏裁判机器人：支持 50+ 种多人游戏，将聊天室打造成游戏竞技平台（仅Linux）",
-    "version": "2.0.0",
+    "version": "2.2.0",
     "category": "游戏",
     "github": "https://github.com/tiedanGH/LGTBot_ElainaBot",
     "branch": "main",
@@ -251,7 +251,7 @@
     "tags": [
       "工具"
     ]
-},
+  },
   {
     "name": "群发插件",
     "type": "plugin",
@@ -264,7 +264,7 @@
     "tags": [
       "工具"
     ]
-},
+  },
   {
     "name": "自定义API",
     "type": "plugin",
@@ -277,7 +277,7 @@
     "tags": [
       "工具"
     ]
-},
+  },
   {
     "name": "记账2.0",
     "type": "plugin",
@@ -291,5 +291,20 @@
     "tags": [
       "工具"
     ]
-}
+  },
+  {
+    "name": "随机工具",
+    "type": "plugin",
+    "author": "铁蛋",
+    "description": "骰子算式、随机数生成、元素抽取等随机工具，本地沙箱安全执行，无用户输入回显",
+    "version": "1.0.0",
+    "category": "工具",
+    "github": "https://github.com/tiedanGH/elaina-plugin-rd",
+    "branch": "main",
+    "tags": [
+      "工具",
+      "随机",
+      "骰子"
+    ]
+  }
 ]
