@@ -317,5 +317,29 @@
     "github": "https://github.com/baiyifei61-cmd/xyg-plugin",
     "branch": "main",
     "tags": ["游戏", "谐音梗", "答题"]
+  },
+  {
+    "name": "今日老婆",
+    "type": "plugin",
+    "author": "Astudlox",
+    "description": "从群成员中随机抽取今日老婆, 支持系统变量、全局冷却、自定义文本/按钮和 Web 管理",
+    "version": "1.1.0",
+    "category": "娱乐",
+    "github": "https://github.com/Youth2018/Ela-plugins",
+    "branch": "main",
+    "path": "今日老婆/今日老婆.py",
+    "tags": ["娱乐", "随机", "抽签", "群聊"]
+  },
+  {
+    "name": "关键词自动回复",
+    "type": "plugin",
+    "author": "Astudlox",
+    "description": "扩展页面管理关键词规则, 支持完全/模糊/正则匹配、优先级、Markdown、变量替换、群聊定向、自定义按钮",
+    "version": "3.1.0",
+    "category": "工具",
+    "github": "https://github.com/Youth2018/Ela-plugins",
+    "branch": "main",
+    "path": "关键词回复/关键词回复.py",
+    "tags": ["工具", "回复", "关键词", "自动化"]
   }
 ]
