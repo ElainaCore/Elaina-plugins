@@ -62,18 +62,18 @@
     ]
   },
   {
-    "name": "云痕前置插件",
+    "name": "备份工具",
     "type": "complete",
     "author": "云痕",
-    "description": "前置插件：统一加载 config/ 所有 YAML 配置，自动生成加载日志，供其他插件调用",
-    "version": "1.5.0",
-    "category": "前置插件",
-    "github": "https://github.com/yhkj-nb/yh-qcj",
+    "description": "为框架提供备份与迁移功能",
+    "version": "1.0.0",
+    "category": "工具",
+    "github": "https://github.com/yhkj-nb/elaina-backup-manager",
     "branch": "main",
     "tags": [
-      "前置插件",
-      "配置加载",
-      "YAML"
+      "工具",
+      "备份",
+      "迁移"
     ]
   },
   {
