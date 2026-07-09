@@ -340,5 +340,23 @@
       "谐音梗",
       "答题"
     ]
-  }
+  },
+  {
+  "name": "舒尔特方格",
+  "type": "single",
+  "author": "孟夏十三",
+  "description": "5×5 舒尔特方格反应力训练，回调按钮按序点击计时，全服 TOP10 排行",
+  "version": "1.0.0",
+  "category": "娱乐",
+  "github": "https://github.com/MengXiaSS/elaina-plugin-shuerte",
+  "branch": "main",
+  "path": "ShuErTe.py",
+  "alone": false,
+  "tags": [
+    "舒尔特", 
+    "训练", 
+    "排行", 
+    "回调按钮"
+  ]
+}
 ]
