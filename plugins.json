@@ -66,7 +66,7 @@
     "type": "complete",
     "author": "云痕",
     "description": "为框架提供备份与迁移功能",
-    "version": "1.0.0",
+    "version": "1.5.0",
     "category": "工具",
     "github": "https://github.com/yhkj-nb/elaina-backup-manager",
     "branch": "main",
