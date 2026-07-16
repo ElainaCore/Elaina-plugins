@@ -4,7 +4,7 @@
     "type": "complete",
     "author": "ElainaBot",
     "description": "框架内置系统插件, 提供基础信息、管理、查询、示例等功能",
-    "version": "1.0.2",
+    "version": "1.0.5",
     "category": "系统",
     "github": "https://github.com/ElainaCore/ElainaBot_v2",
     "branch": "main",
@@ -339,6 +339,39 @@
       "游戏",
       "谐音梗",
       "答题"
+    ]
+  },
+  {
+    "name": "舒尔特方格",
+    "type": "single",
+    "author": "孟夏十三",
+    "description": "5×5 舒尔特方格反应力训练，回调按钮按序点击计时，全服 TOP10 排行",
+    "version": "1.0.0",
+    "category": "娱乐",
+    "github": "https://github.com/MengXiaSS/elaina-plugin-shuerte",
+    "branch": "main",
+    "path": "ShuErTe.py",
+    "alone": false,
+    "tags": [
+      "舒尔特",
+      "训练",
+      "排行",
+      "回调按钮"
+    ]
+  },
+  {
+    "name": "主动推送",
+    "type": "complete",
+    "author": "冷曦",
+    "description": "向全量群或好友主动推送指定消息",
+    "version": "1.2.3",
+    "category": "工具",
+    "github": "https://github.com/lengxi-root/elaina-plugins-lengxi",
+    "branch": "main",
+    "path": "Active Push",
+    "tags": [
+      "主动",
+      "工具"
     ]
   }
 ]
