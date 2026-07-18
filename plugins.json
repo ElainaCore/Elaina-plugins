@@ -400,5 +400,19 @@
     "branch": "main",
     "path": "astr基座",
     "tags": ["AstrBot", "适配", "工具"]
+  },
+  {
+    "name": "ElainaBot 早柚适配器",
+    "type": "complete",
+    "author": "MortalCat",
+    "description": "一个适用于ElainaBot的GScore适配器",
+    "version": "1.0.0",
+    "category": "分类",
+    "github": "https://github.com/xiowo/elainabot_gscore_adapter",
+    "branch": "main",
+    "tags": [
+      "系统",
+      "工具"
+    ]
   }
 ]
