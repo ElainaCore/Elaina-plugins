@@ -407,7 +407,7 @@
     "author": "MortalCat",
     "description": "一个适用于ElainaBot的GScore适配器",
     "version": "1.0.0",
-    "category": "分类",
+    "category": "系统",
     "github": "https://github.com/xiowo/elainabot_gscore_adapter",
     "branch": "main",
     "tags": [
