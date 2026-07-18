@@ -1,0 +1,436 @@
+[
+  {
+    "name": "system",
+    "type": "complete",
+    "author": "ElainaBot",
+    "description": "框架内置系统插件, 提供基础信息、管理、查询、示例等功能",
+    "version": "1.0.5",
+    "category": "系统",
+    "github": "https://github.com/ElainaCore/ElainaBot_v2",
+    "branch": "main",
+    "path": "plugins/system",
+    "tags": [
+      "系统",
+      "管理",
+      "内置"
+    ]
+  },
+  {
+    "name": "AI开发插件",
+    "type": "complete",
+    "author": "冷曦",
+    "description": "接入 OpenAI 让 AI 自主编写/修改框架插件",
+    "version": "1.0.5",
+    "category": "工具",
+    "github": "https://github.com/lengxi-root/elaina-plugins-lengxi",
+    "branch": "main",
+    "path": "ai_dev",
+    "tags": [
+      "AI",
+      "开发",
+      "工具"
+    ]
+  },
+  {
+    "name": "工作流API",
+    "type": "complete",
+    "author": "冷曦",
+    "description": "可视化工作流自定义API，热更新，支持变量与节点输出",
+    "version": "1.0.2",
+    "category": "工具",
+    "github": "https://github.com/lengxi-root/elaina-plugins-lengxi",
+    "branch": "main",
+    "tags": [
+      "工具"
+    ],
+    "path": "workflowapi"
+  },
+  {
+    "name": "熵增基座",
+    "type": "complete",
+    "author": "冷曦",
+    "description": "游戏查询插件基座：一键安装三角洲、终末地、洛克王国:世界等游戏查询插件",
+    "version": "1.2.0",
+    "category": "游戏",
+    "github": "https://github.com/Entropy-Increase-Team/elaina-plugin-Entropy_Base",
+    "branch": "main",
+    "tags": [
+      "游戏",
+      "三角洲",
+      "终末地",
+      "洛克王国"
+    ]
+  },
+  {
+    "name": "备份工具",
+    "type": "complete",
+    "author": "云痕",
+    "description": "为框架提供备份与迁移功能",
+    "version": "1.5.0",
+    "category": "工具",
+    "github": "https://github.com/yhkj-nb/elaina-backup-manager",
+    "branch": "main",
+    "tags": [
+      "工具",
+      "备份",
+      "迁移"
+    ]
+  },
+  {
+    "name": "image_hosting",
+    "type": "module",
+    "author": "ElainaBot",
+    "description": "统一图床上传 (COS / B站 / QQ频道 / ChatGLM / Ukaka / 星野 / Nature)",
+    "version": "1.2.0",
+    "category": "服务",
+    "github": "https://github.com/ElainaCore/ElainaBot_v2",
+    "branch": "main",
+    "tags": [
+      "图床",
+      "上传",
+      "COS"
+    ]
+  },
+  {
+    "name": "datastore",
+    "type": "module",
+    "author": "ElainaBot",
+    "description": "MySQL + Redis 统一数据存储模块, 异步连接池与完整 CRUD / 缓存操作",
+    "version": "1.0.0",
+    "category": "服务",
+    "github": "https://github.com/ElainaCore/ElainaBot_v2",
+    "branch": "main",
+    "tags": [
+      "数据库",
+      "MySQL",
+      "Redis"
+    ]
+  },
+  {
+    "name": "playwright",
+    "type": "module",
+    "author": "ElainaBot",
+    "description": "异步 Playwright 浏览器渲染, 支持 URL/HTML 截图与 PDF 导出",
+    "version": "1.1.0",
+    "category": "服务",
+    "github": "https://github.com/ElainaCore/ElainaBot_v2",
+    "branch": "main",
+    "tags": [
+      "渲染",
+      "截图",
+      "Playwright"
+    ]
+  },
+  {
+    "name": "onebot_adapter",
+    "type": "module",
+    "author": "Elaina",
+    "description": "OneBot 11 协议适配器, 将消息/事件推送到外部机器人框架",
+    "version": "2.0.0",
+    "category": "适配器",
+    "github": "https://github.com/ElainaCore/ElainaBot_v2",
+    "branch": "main",
+    "tags": [
+      "OneBot",
+      "适配器",
+      "WebSocket"
+    ]
+  },
+  {
+    "name": "LGTBot_ElainaBot",
+    "type": "complete",
+    "author": "铁蛋",
+    "description": "基于 C++ 的 LGTBot 游戏裁判机器人：支持 50+ 种多人游戏，将聊天室打造成游戏竞技平台（仅Linux）",
+    "version": "2.2.0",
+    "category": "游戏",
+    "github": "https://github.com/tiedanGH/LGTBot_ElainaBot",
+    "branch": "main",
+    "tags": [
+      "多人",
+      "竞技",
+      "桌游"
+    ]
+  },
+  {
+    "name": "三角洲今日密码",
+    "type": "single",
+    "author": "冷曦",
+    "description": "三角洲行动每日密码查询，自动缓存当日密码",
+    "version": "1.0.0",
+    "category": "游戏",
+    "github": "https://github.com/lengxi-root/elaina-plugins-lengxi",
+    "branch": "main",
+    "path": "alone/三角洲今日密码.py",
+    "tags": [
+      "游戏",
+      "三角洲",
+      "查询"
+    ]
+  },
+  {
+    "name": "全量申请",
+    "type": "single",
+    "author": "冷曦",
+    "description": "生成群全量消息授权链接，免@处理指令",
+    "version": "1.1.0",
+    "category": "工具",
+    "github": "https://github.com/lengxi-root/elaina-plugins-lengxi",
+    "branch": "main",
+    "path": "alone/全量申请.py",
+    "tags": [
+      "工具",
+      "QQ群",
+      "授权"
+    ]
+  },
+  {
+    "name": "哈基米",
+    "type": "single",
+    "author": "冷曦",
+    "description": "随机发送哈基米语音",
+    "version": "1.0.0",
+    "category": "娱乐",
+    "github": "https://github.com/lengxi-root/elaina-plugins-lengxi",
+    "branch": "main",
+    "path": "alone/哈基米.py",
+    "tags": [
+      "娱乐",
+      "语音"
+    ]
+  },
+  {
+    "name": "字符字",
+    "type": "single",
+    "author": "冷曦",
+    "description": "将汉字转为字符画",
+    "version": "1.0.0",
+    "category": "娱乐",
+    "github": "https://github.com/lengxi-root/elaina-plugins-lengxi",
+    "branch": "main",
+    "path": "alone/字符字.py",
+    "tags": [
+      "娱乐"
+    ]
+  },
+  {
+    "name": "恶臭生成器",
+    "type": "single",
+    "author": "冷曦",
+    "description": "将任意数字转换为 114514 表达式（本地计算）",
+    "version": "1.0.0",
+    "category": "娱乐",
+    "github": "https://github.com/lengxi-root/elaina-plugins-lengxi",
+    "branch": "main",
+    "path": "alone/恶臭生成器.py",
+    "tags": [
+      "娱乐"
+    ]
+  },
+  {
+    "name": "音乐点歌",
+    "type": "single",
+    "author": "冷曦",
+    "description": "QQ音乐搜索与播放，支持序号选歌",
+    "version": "1.0.0",
+    "category": "娱乐",
+    "github": "https://github.com/lengxi-root/elaina-plugins-lengxi",
+    "branch": "main",
+    "path": "alone/音乐点歌.py",
+    "tags": [
+      "音乐",
+      "点歌",
+      "娱乐"
+    ]
+  },
+  {
+    "name": "针对撤回",
+    "type": "single",
+    "author": "冷曦",
+    "description": "被针对的人，发言就会被撤回",
+    "version": "2.0.0",
+    "category": "娱乐",
+    "github": "https://github.com/lengxi-root/elaina-plugins-lengxi",
+    "branch": "main",
+    "path": "alone/针对撤回.py",
+    "tags": [
+      "群管",
+      "娱乐"
+    ]
+  },
+  {
+    "name": "群成员入群欢迎",
+    "type": "complete",
+    "author": "冷曦",
+    "description": "群成员入群自动欢迎推送，支持模板、全群模式、白名单、每日上限，含 Web 面板",
+    "version": "1.4.0",
+    "category": "工具",
+    "github": "https://github.com/lengxi-root/elaina-plugins-lengxi",
+    "branch": "main",
+    "tags": [
+      "工具"
+    ],
+    "path": "welcome"
+  },
+  {
+    "name": "群发插件",
+    "type": "complete",
+    "author": "miaolik",
+    "description": "群发消息，支持群聊和私聊，含 Web 面板",
+    "version": "1.1.0",
+    "category": "工具",
+    "github": "https://github.com/miaolik/plugin-qunfa",
+    "branch": "main",
+    "tags": [
+      "工具"
+    ]
+  },
+  {
+    "name": "自定义API",
+    "type": "complete",
+    "author": "miaolik",
+    "description": "自定义API，支持群聊和私聊，含 Web 面板",
+    "version": "2.0.0",
+    "category": "工具",
+    "github": "https://github.com/miaolik/plugin-API",
+    "branch": "main",
+    "tags": [
+      "工具"
+    ]
+  },
+  {
+    "name": "记账2.0",
+    "type": "single",
+    "author": "miaolik",
+    "description": "记录日常开支，支持群聊和私聊",
+    "version": "1.1.0",
+    "category": "工具",
+    "github": "https://github.com/miaolik/plugin-jz",
+    "branch": "main",
+    "path": "记账2.0.py",
+    "tags": [
+      "工具"
+    ]
+  },
+  {
+    "name": "随机工具",
+    "type": "complete",
+    "author": "铁蛋",
+    "description": "骰子算式、随机数生成、元素抽取等随机工具，本地沙箱安全执行，无用户输入回显",
+    "version": "1.0.0",
+    "category": "工具",
+    "github": "https://github.com/tiedanGH/elaina-plugin-rd",
+    "branch": "main",
+    "tags": [
+      "工具",
+      "随机",
+      "骰子"
+    ]
+  },
+  {
+    "name": "舒尔特方格",
+    "type": "single",
+    "author": "孟夏十三",
+    "description": "5×5 舒尔特方格反应力训练，回调按钮按序点击计时，全服 TOP10 排行",
+    "version": "1.0.0",
+    "category": "娱乐",
+    "github": "https://github.com/MengXiaSS/elaina-plugin-shuerte",
+    "branch": "main",
+    "path": "ShuErTe.py",
+    "alone": false,
+    "tags": [
+      "舒尔特",
+      "训练",
+      "排行",
+      "回调按钮"
+    ]
+  },
+  {
+    "name": "主动推送",
+    "type": "complete",
+    "author": "冷曦",
+    "description": "向全量群或好友主动推送指定消息",
+    "version": "1.2.3",
+    "category": "工具",
+    "github": "https://github.com/lengxi-root/elaina-plugins-lengxi",
+    "branch": "main",
+    "path": "Active Push",
+    "tags": [
+      "主动",
+      "工具"
+    ]
+  },
+  {
+    "name": "群管",
+    "type": "complete",
+    "author": "冷曦",
+    "description": "群管插件，违禁词，入群验证撤回等",
+    "version": "1.0.1",
+    "category": "工具",
+    "github": "https://github.com/lengxi-root/elaina-plugins-lengxi",
+    "branch": "main",
+    "path": "groupguard",
+    "tags": [
+      "工具",
+      "群管"
+    ]
+  },
+   {
+    "name": "AstrBot基座",
+    "type": "complete",
+    "author": "冷曦",
+    "description": "在ElainaBot v2上运行 AstrBot框架插件，Web 面板一键装/卸/配置/热重载",
+    "version": "1.0.3",
+    "category": "工具",
+    "github": "https://github.com/lengxi-root/elaina-plugins-lengxi",
+    "branch": "main",
+    "path": "astr基座",
+    "tags": ["AstrBot", "适配", "工具"]
+  },
+  {
+    "name": "ElainaBot 早柚适配器",
+    "type": "complete",
+    "author": "MortalCat",
+    "description": "一个适用于ElainaBot的GScore适配器",
+    "version": "1.0.0",
+    "category": "系统",
+    "github": "https://github.com/xiowo/elainabot_gscore_adapter",
+    "branch": "main",
+    "tags": [
+      "系统",
+      "工具"
+    ]
+  },
+  {
+    "name": "违禁词",
+    "type": "complete",
+    "author": "miaolik",
+    "description": "命中违禁词自动撤回, 支持全局/分群词库与 Web 后台配置",
+    "version": "1.0.0",
+    "category": "群管",
+    "github": "https://github.com/miaolik/plugin-wjc",
+    "branch": "main",
+    "tags": ["违禁词", "群管", "工具"]
+  },
+  {
+    "name": "关键词回复",
+    "type": "complete",
+    "author": "miaolik",
+    "description": "全局/分群关键词自动回复, 指令化管理+审核+定时推送+多种输出, Web 后台",
+    "version": "4.0.0",
+    "category": "群管",
+    "github": "https://github.com/miaolik/plugin-gjc",
+    "branch": "main",
+    "tags": ["关键词", "群管", "工具"]
+  },
+    {
+    "name": "玄天虾虾",
+    "type": "complete",
+    "author": "baiyifei61-cmd",
+    "description": "谐音梗答题游戏，看图猜谐音梗",
+    "version": "1.0.1",
+    "category": "娱乐",
+    "github": "https://github.com/baiyifei61-cmd/xyg-plugin",
+    "branch": "main",
+    "tags": ["游戏", "谐音梗", "答题"]
+  }
+]
