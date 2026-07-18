@@ -289,7 +289,7 @@
     "type": "complete",
     "author": "miaolik",
     "description": "自定义API，支持群聊和私聊，含 Web 面板",
-    "version": "1.1.0",
+    "version": "2.0.0",
     "category": "工具",
     "github": "https://github.com/miaolik/plugin-API",
     "branch": "main",
@@ -414,5 +414,27 @@
       "系统",
       "工具"
     ]
+  },
+  {
+    "name": "违禁词",
+    "type": "complete",
+    "author": "miaolik",
+    "description": "命中违禁词自动撤回, 支持全局/分群词库与 Web 后台配置",
+    "version": "1.0.0",
+    "category": "群管",
+    "github": "https://github.com/miaolik/plugin-wjc",
+    "branch": "main",
+    "tags": ["违禁词", "群管", "工具"]
+  },
+  {
+    "name": "关键词回复",
+    "type": "complete",
+    "author": "miaolik",
+    "description": "全局/分群关键词自动回复, 指令化管理+审核+定时推送+多种输出, Web 后台",
+    "version": "4.0.0",
+    "category": "群管",
+    "github": "https://github.com/miaolik/plugin-gjc",
+    "branch": "main",
+    "tags": ["关键词", "群管", "工具"]
   }
 ]
