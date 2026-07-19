@@ -422,6 +422,28 @@
     "branch": "main",
     "tags": ["关键词", "群管", "工具"]
   },
+  {
+    "name": "腾讯频道",
+    "type": "complete",
+    "author": "miaolik",
+    "description": "腾讯频道Skill插件版，腾讯频道管理：指令 + Web 管理面板 + 定时发帖（Cron），仅限插件管理员使用 Web 后台",
+    "version": "2.0.0",
+    "category": "Skill",
+    "github": "https://github.com/miaolik/txpd",
+    "branch": "main",
+    "tags": ["Skill", "频道", "工具"]
+  },
+  {
+    "name": "QG词库",
+    "type": "complete",
+    "author": "miaolik",
+    "description": "词库编写，新手入门, Web 后台",
+    "version": "1.1.0",
+    "category": "词库",
+    "github": "https://github.com/miaolik/plugin-ck",
+    "branch": "main",
+    "tags": ["词库", "群管", "工具"]
+  },
     {
     "name": "玄天虾虾",
     "type": "complete",
