@@ -20,7 +20,7 @@
     "type": "complete",
     "author": "冷曦",
     "description": "接入 OpenAI 让 AI 自主编写/修改框架插件",
-    "version": "1.0.5",
+    "version": "1.1.0",
     "category": "工具",
     "github": "https://github.com/lengxi-root/elaina-plugins-lengxi",
     "branch": "main",
@@ -80,8 +80,8 @@
     "name": "image_hosting",
     "type": "module",
     "author": "ElainaBot",
-    "description": "统一图床上传 (COS / B站 / QQ频道 / ChatGLM / Ukaka / 星野 / Nature)",
-    "version": "1.2.0",
+    "description": "统一图床上传，用于markdown图片链接发送",
+    "version": "2.0.0",
     "category": "服务",
     "github": "https://github.com/ElainaCore/ElainaBot_v2",
     "branch": "main",
@@ -96,7 +96,7 @@
     "type": "module",
     "author": "ElainaBot",
     "description": "MySQL + Redis 统一数据存储模块, 异步连接池与完整 CRUD / 缓存操作",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "category": "服务",
     "github": "https://github.com/ElainaCore/ElainaBot_v2",
     "branch": "main",
@@ -107,17 +107,18 @@
     ]
   },
   {
-    "name": "playwright",
+    "name": "renderer",
     "type": "module",
     "author": "ElainaBot",
-    "description": "异步 Playwright 浏览器渲染, 支持 URL/HTML 截图与 PDF 导出",
-    "version": "1.1.0",
+    "description": "渲染引擎: PIL 子进程渲染池 + Playwright 浏览器渲染统一管理, 全局共享按需启停",
+    "version": "2.0.0",
     "category": "服务",
     "github": "https://github.com/ElainaCore/ElainaBot_v2",
     "branch": "main",
     "tags": [
       "渲染",
       "截图",
+      "PIL",
       "Playwright"
     ]
   },
@@ -140,8 +141,8 @@
     "name": "LGTBot_ElainaBot",
     "type": "complete",
     "author": "铁蛋",
-    "description": "基于 C++ 的 LGTBot 游戏裁判机器人：支持 50+ 种多人游戏，将聊天室打造成游戏竞技平台（仅Linux）",
-    "version": "2.2.0",
+    "description": "基于 C++ 的 LGTBot 游戏裁判机器人：支持 50+ 种多人游戏，将聊天室打造成游戏竞技平台。免编译部署（仅Linux）",
+    "version": "2.6.1",
     "category": "游戏",
     "github": "https://github.com/tiedanGH/LGTBot_ElainaBot",
     "branch": "main",
@@ -289,7 +290,7 @@
     "type": "complete",
     "author": "miaolik",
     "description": "自定义API，支持群聊和私聊，含 Web 面板",
-    "version": "1.1.0",
+    "version": "2.0.0",
     "category": "工具",
     "github": "https://github.com/miaolik/plugin-API",
     "branch": "main",
@@ -316,29 +317,15 @@
     "type": "complete",
     "author": "铁蛋",
     "description": "骰子算式、随机数生成、元素抽取等随机工具，本地沙箱安全执行，无用户输入回显",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "category": "工具",
-    "github": "https://github.com/tiedanGH/elaina-plugin-rd",
+    "github": "https://github.com/tiedanGH/ElainaBot-plugins-tiedan",
     "branch": "main",
+    "path": "随机工具",
     "tags": [
       "工具",
       "随机",
       "骰子"
-    ]
-  },
-  {
-    "name": "玄天虾虾",
-    "type": "complete",
-    "author": "baiyifei61-cmd",
-    "description": "谐音梗答题游戏，看图猜谐音梗",
-    "version": "1.0.0",
-    "category": "娱乐",
-    "github": "https://github.com/baiyifei61-cmd/xyg-plugin",
-    "branch": "main",
-    "tags": [
-      "游戏",
-      "谐音梗",
-      "答题"
     ]
   },
   {
@@ -371,6 +358,157 @@
     "path": "Active Push",
     "tags": [
       "主动",
+      "工具"
+    ]
+  },
+  {
+    "name": "群管",
+    "type": "complete",
+    "author": "冷曦",
+    "description": "群管插件，违禁词，入群验证撤回等",
+    "version": "1.0.1",
+    "category": "工具",
+    "github": "https://github.com/lengxi-root/elaina-plugins-lengxi",
+    "branch": "main",
+    "path": "groupguard",
+    "tags": [
+      "工具",
+      "群管"
+    ]
+  },
+  {
+    "name": "AstrBot基座",
+    "type": "complete",
+    "author": "冷曦",
+    "description": "在ElainaBot v2上运行 AstrBot框架插件，Web 面板一键装/卸/配置/热重载",
+    "version": "1.0.4",
+    "category": "工具",
+    "github": "https://github.com/lengxi-root/elaina-plugins-lengxi",
+    "branch": "main",
+    "path": "astr基座",
+    "tags": [
+      "AstrBot",
+      "适配",
+      "工具"
+    ]
+  },
+  {
+    "name": "ElainaBot 早柚适配器",
+    "type": "complete",
+    "author": "MortalCat",
+    "description": "一个适用于ElainaBot的GScore适配器",
+    "version": "1.1.0",
+    "category": "系统",
+    "github": "https://github.com/xiowo/elainabot_gscore_adapter",
+    "branch": "main",
+    "tags": [
+      "系统",
+      "适配",
+      "工具"
+    ]
+  },
+  {
+    "name": "违禁词",
+    "type": "complete",
+    "author": "miaolik",
+    "description": "命中违禁词自动撤回, 支持全局/分群词库与 Web 后台配置",
+    "version": "1.0.0",
+    "category": "群管",
+    "github": "https://github.com/miaolik/plugin-wjc",
+    "branch": "main",
+    "tags": [
+      "违禁词",
+      "群管",
+      "工具"
+    ]
+  },
+  {
+    "name": "关键词回复",
+    "type": "complete",
+    "author": "miaolik",
+    "description": "全局/分群关键词自动回复, 指令化管理+审核+定时推送+多种输出, Web 后台",
+    "version": "4.0.0",
+    "category": "群管",
+    "github": "https://github.com/miaolik/plugin-gjc",
+    "branch": "main",
+    "tags": [
+      "关键词",
+      "群管",
+      "工具"
+    ]
+  },
+  {
+    "name": "腾讯频道",
+    "type": "complete",
+    "author": "miaolik",
+    "description": "腾讯频道Skill插件版，腾讯频道管理：指令 + Web 管理面板 + 定时发帖（Cron），仅限插件管理员使用 Web 后台",
+    "version": "2.0.0",
+    "category": "Skill",
+    "github": "https://github.com/miaolik/txpd",
+    "branch": "main",
+    "tags": [
+      "Skill",
+      "频道",
+      "工具"
+    ]
+  },
+  {
+    "name": "QG词库",
+    "type": "complete",
+    "author": "miaolik",
+    "description": "词库编写，新手入门, Web 后台",
+    "version": "1.1.0",
+    "category": "词库",
+    "github": "https://github.com/miaolik/plugin-ck",
+    "branch": "main",
+    "tags": [
+      "词库",
+      "群管",
+      "工具"
+    ]
+  },
+  {
+    "name": "玄天虾虾",
+    "type": "complete",
+    "author": "baiyifei61-cmd",
+    "description": "谐音梗答题游戏，看图猜谐音梗",
+    "version": "1.0.1",
+    "category": "娱乐",
+    "github": "https://github.com/baiyifei61-cmd/xyg-plugin",
+    "branch": "main",
+    "tags": [
+      "游戏",
+      "谐音梗",
+      "答题"
+    ]
+  },
+  {
+    "name": "系统状态",
+    "type": "complete",
+    "author": "酸甜牛奶",
+    "description": "查询bot所在的系统状态，可查询系统信息、CPU、内存、磁盘。",
+    "version": "1.2.0",
+    "category": "工具",
+    "github": "https://github.com/MilkNiuNai/Elainabot_System-Status",
+    "branch": "main",
+    "tags": [
+      "系统",
+      "磁盘",
+      "CPU",
+      "内存"
+    ]
+  },
+  {
+    "name": "wechat-bot",
+    "type": "complete",
+    "author": "乄杺",
+    "description": "利用微信ClawBot实现管理框架机器人以及查看机器人DAU数据",
+    "version": "1.0.0",
+    "category": "分类",
+    "github": "https://github.com/linxi-root/wechat-bot",
+    "branch": "main",
+    "tags": [
+      "微信ClawBot",
       "工具"
     ]
   }

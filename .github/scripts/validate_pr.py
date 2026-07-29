@@ -1,6 +1,6 @@
-"""校验 PR 中的 plugins.json: 格式 + schema + 新增/改动条目的仓库可用性。
+"""校验 PR 中的插件清单 (plugins.json / onebot_plugins.json): 格式 + schema + 新增/改动条目的仓库可用性。
 
-用法: python validate_pr.py <head_plugins.json> [base_plugins.json]
+用法: python validate_pr.py <head.json> [base.json] [清单名]
 
 - head: PR 改动后的清单 (必填)
 - base: 目标分支的清单 (选填); 提供后只对新增/改动的条目做仓库可达性检查
@@ -47,7 +47,7 @@ def validate_schema(data):
     """返回错误信息列表 (空列表代表通过)。"""
     errors = []
     if not isinstance(data, list):
-        return ['plugins.json 顶层必须是数组']
+        return ['清单顶层必须是数组']
     seen = set()
     for i, e in enumerate(data):
         tag = f'第 {i + 1} 项'
@@ -78,6 +78,54 @@ def validate_schema(data):
 
 def _key(e):
     return json.dumps(e, sort_keys=True, ensure_ascii=False)
+
+
+def _owner(entry):
+    """返回条目 github 仓库的 owner (小写), 无法解析时返回 None。"""
+    slug = parse_repo(entry.get('github', '')) if isinstance(entry, dict) else None
+    return slug.split('/')[0].lower() if slug else None
+
+
+def validate_ownership(head, base, author):
+    """PR 作者只能新增/修改/删除属于自己仓库的插件条目。返回错误列表。"""
+    errors = []
+    author = (author or '').lower()
+    base_by_name = {e.get('name'): e for e in (base or []) if isinstance(e, dict) and e.get('name')}
+    head_by_name = {e.get('name'): e for e in head if isinstance(e, dict) and e.get('name')}
+
+    for name, e in head_by_name.items():
+        old = base_by_name.get(name)
+        if old is None:
+            if _owner(e) != author:
+                errors.append(f'`{name}`: 新增插件的仓库必须属于 PR 作者 `{author}` (当前 owner: `{_owner(e)}`)')
+        elif _key(old) != _key(e):
+            if _owner(old) != author:
+                errors.append(f'`{name}`: 无权修改属于 `{_owner(old)}` 的插件条目')
+            elif _owner(e) != author:
+                errors.append(f'`{name}`: 不允许将插件仓库转移给其他用户 (`{_owner(e)}`)')
+    for name, old in base_by_name.items():
+        if name not in head_by_name and _owner(old) != author:
+            errors.append(f'`{name}`: 无权删除属于 `{_owner(old)}` 的插件条目')
+    return errors
+
+
+def validate_order(head, base):
+    """新插件只能追加到末尾, 且不允许重排已有插件。返回错误列表。"""
+    base_names = [e.get('name') for e in (base or []) if isinstance(e, dict) and e.get('name')]
+    head_names = [e.get('name') for e in head if isinstance(e, dict) and e.get('name')]
+    base_set, head_set = set(base_names), set(head_names)
+    expected = [n for n in base_names if n in head_set] + [n for n in head_names if n not in base_set]
+    if head_names == expected:
+        return []
+    errors = []
+    kept = [n for n in head_names if n in base_set]
+    if kept != [n for n in base_names if n in head_set]:
+        errors.append('不允许调整已有插件的顺序')
+    last_kept_idx = max((head_names.index(n) for n in kept), default=-1)
+    misplaced = [n for n in head_names if n not in base_set and head_names.index(n) < last_kept_idx]
+    for n in misplaced:
+        errors.append(f'`{n}`: 新插件只能追加到列表末尾, 不允许插入到已有插件之前')
+    return errors
 
 
 def changed_entries(head, base):
@@ -120,8 +168,9 @@ def check_availability(entry):
 def main():
     head_path = sys.argv[1]
     base_path = sys.argv[2] if len(sys.argv) > 2 and os.path.exists(sys.argv[2]) else None
+    label = sys.argv[3] if len(sys.argv) > 3 else 'plugins.json'
 
-    lines = ['## 🤖 插件清单自动校验', '']
+    lines = [f'## 🤖 插件清单自动校验 — `{label}`', '']
     overall_ok = True
 
     # 1) JSON 解析
@@ -144,9 +193,18 @@ def main():
 
     # 2) schema
     errors = validate_schema(head)
+
+    # 2.5) 顺序与归属校验 (仅在 schema 通过且有 base 可比对时)
+    if not errors and base is not None:
+        errors += validate_order(head, base)
+        author = os.environ.get('PR_AUTHOR', '')
+        perm = os.environ.get('PR_AUTHOR_PERM', '').lower()
+        if author and perm not in ('admin', 'maintain', 'write'):
+            errors += validate_ownership(head, base, author)
+
     if errors:
         overall_ok = False
-        lines.append('### ❌ 字段校验未通过')
+        lines.append('### ❌ 校验未通过')
         lines += [f'- {e}' for e in errors]
         lines.append('')
     else:

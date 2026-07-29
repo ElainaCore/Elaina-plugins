@@ -28,7 +28,7 @@
     "type": "complete",
     "author": "冷曦",
     "description": "接入 OpenAI 兼容接口的 AI 猫娘对话助手，支持人设/上下文记忆/工具调用，Web 面板配置",
-    "version": "1.0.0",
+    "version": "1.3.0",
     "category": "AI",
     "github": "https://github.com/lengxi-root/elaina-plugins-lengxi",
     "branch": "main",

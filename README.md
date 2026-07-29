@@ -193,5 +193,8 @@ __module_meta__ = {
 
 - 额外 pip 依赖请在仓库中提供 `requirements.txt`
 - 插件代码必须包含 `__plugin_meta__`，模块必须包含 `__module_meta__`
+- PR 只能新增/修改/删除**属于你自己 GitHub 账号仓库**的插件条目，不能改动他人的条目
+- 新插件请**追加到清单末尾**（`plugins.json` / `onebot_plugins.json`），不要插入到已有插件之间，也不要调整已有插件顺序
+- 自动合并仅在 PR 只改动 `plugins.json` / `onebot_plugins.json` 时生效；改动其他文件需人工审核
 - 禁止提交恶意代码、违法内容
 

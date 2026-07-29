@@ -1,11 +1,11 @@
-"""每日检查 plugins.json 中各插件仓库是否可访问。
+"""每日检查插件清单 (plugins.json / onebot_plugins.json) 中各插件仓库是否可访问。
 
 - 首次检测到某仓库不可访问: 记录失败时间并告警。
 - 持续不可访问超过宽限期 (默认 24 小时): 自动删除该仓库对应的所有插件索引。
 - 仓库恢复: 清除其失败记录。
 
 产物:
-- 原地更新 plugins.json (若有删除) 与状态文件 .github/health-state.json。
+- 原地更新各插件清单 (若有删除) 与状态文件 .github/health-state.json。
 - 写出 .github/health-report.md 作为告警 Issue 正文。
 - 通过 $GITHUB_OUTPUT 暴露 has_alert / changed 供 workflow 判断。
 """
@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import dump_plugins, load_plugins, parse_repo, repo_available  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-PLUGINS = os.path.join(ROOT, 'plugins.json')
+MANIFESTS = [os.path.join(ROOT, 'plugins.json'), os.path.join(ROOT, 'onebot_plugins.json')]
 STATE = os.path.join(ROOT, '.github', 'health-state.json')
 REPORT = os.path.join(ROOT, '.github', 'health-report.md')
 
@@ -58,16 +58,17 @@ def _fmt(ts):
 
 
 def main():
-    plugins = load_plugins(PLUGINS)
+    manifests = {path: load_plugins(path) for path in MANIFESTS if os.path.exists(path)}
     state = _load_state()
     now = time.time()
 
-    # 仓库 -> 该仓库下的插件名列表
+    # 仓库 -> 该仓库下的插件名列表 (汇总所有清单)
     repo_to_names = {}
-    for p in plugins:
-        slug = parse_repo(p.get('github', ''))
-        if slug:
-            repo_to_names.setdefault(slug, []).append(p.get('name', '?'))
+    for plugins in manifests.values():
+        for p in plugins:
+            slug = parse_repo(p.get('github', ''))
+            if slug:
+                repo_to_names.setdefault(slug, []).append(p.get('name', '?'))
 
     newly_failed, still_failing, recovered, to_delete = [], [], [], []
 
@@ -93,11 +94,11 @@ def main():
     deleted_slugs = {s for s, _, _ in to_delete}
     changed = False
     if deleted_slugs:
-        before = len(plugins)
-        plugins = [p for p in plugins if parse_repo(p.get('github', '')) not in deleted_slugs]
-        if len(plugins) != before:
-            dump_plugins(PLUGINS, plugins)
-            changed = True
+        for path, plugins in manifests.items():
+            kept = [p for p in plugins if parse_repo(p.get('github', '')) not in deleted_slugs]
+            if len(kept) != len(plugins):
+                dump_plugins(path, kept)
+                changed = True
         for s in deleted_slugs:
             state.pop(s, None)
 

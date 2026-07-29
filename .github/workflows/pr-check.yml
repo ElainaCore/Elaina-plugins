@@ -1,13 +1,14 @@
 name: PR 校验与自动合并
 
 # 使用 pull_request_target: 对来自 fork 的 PR 也能拿到写权限的 token。
-# 安全性: 本工作流只运行 base 分支里可信的脚本, 仅读取 PR 的 plugins.json (数据),
+# 安全性: 本工作流只运行 base 分支里可信的脚本, 仅读取 PR 的插件清单 (数据),
 # 绝不检出或执行 PR 的代码。
 on:
   pull_request_target:
     types: [opened, synchronize, reopened]
     paths:
       - plugins.json
+      - onebot_plugins.json
 
 permissions:
   contents: write
@@ -30,32 +31,59 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: 取 base 与 PR 的 plugins.json
+      - name: 取 base 与 PR 的插件清单
         run: |
-          git show "${{ github.event.pull_request.base.sha }}:plugins.json" > /tmp/base_plugins.json 2>/dev/null || echo '[]' > /tmp/base_plugins.json
           git fetch origin "pull/${{ github.event.pull_request.number }}/head"
-          git show FETCH_HEAD:plugins.json > /tmp/head_plugins.json
+          for F in plugins.json onebot_plugins.json; do
+            git show "${{ github.event.pull_request.base.sha }}:$F" > "/tmp/base_$F" 2>/dev/null || echo '[]' > "/tmp/base_$F"
+            git show "FETCH_HEAD:$F" > "/tmp/head_$F" 2>/dev/null || cp "/tmp/base_$F" "/tmp/head_$F"
+          done
 
-      - name: 校验 JSON 格式 + schema + 仓库可用性
+      - name: 查询 PR 作者在本仓库的权限
+        id: perm
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PERM=$(gh api "repos/${{ github.repository }}/collaborators/${{ github.event.pull_request.user.login }}/permission" --jq .permission 2>/dev/null || echo none)
+          echo "作者权限: $PERM"
+          echo "perm=$PERM" >> "$GITHUB_OUTPUT"
+
+      - name: 校验 JSON 格式 + schema + 归属/顺序 + 仓库可用性
         id: val
         continue-on-error: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python .github/scripts/validate_pr.py /tmp/head_plugins.json /tmp/base_plugins.json
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+          PR_AUTHOR_PERM: ${{ steps.perm.outputs.perm }}
+        run: |
+          OK=true
+          : > /tmp/report.md
+          for F in plugins.json onebot_plugins.json; do
+            # 未改动的清单跳过, 避免报告噪声
+            if cmp -s "/tmp/head_$F" "/tmp/base_$F"; then continue; fi
+            GITHUB_OUTPUT= python .github/scripts/validate_pr.py "/tmp/head_$F" "/tmp/base_$F" "$F" || OK=false
+            cat .github/pr-report.md >> /tmp/report.md
+            echo >> /tmp/report.md
+          done
+          if [[ ! -s /tmp/report.md ]]; then
+            echo '_本次未改动任何插件清单。_' > /tmp/report.md
+          fi
+          cp /tmp/report.md .github/pr-report.md
+          echo "ok=$OK" >> "$GITHUB_OUTPUT"
 
       - name: 回贴校验结果到 PR
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh pr comment "${{ github.event.pull_request.number }}" --repo "${{ github.repository }}" --body-file .github/pr-report.md
 
-      - name: 检查改动文件是否仅限 plugins.json / README.md
+      - name: 检查改动文件是否仅限插件清单
         id: files
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           FILES=$(gh pr view "${{ github.event.pull_request.number }}" --repo "${{ github.repository }}" --json files --jq '.files[].path')
           echo "改动文件:"; echo "$FILES"
-          OTHER=$(echo "$FILES" | grep -vE '^(plugins\.json|README\.md)$' || true)
+          OTHER=$(echo "$FILES" | grep -vE '^(plugins|onebot_plugins)\.json$' || true)
           if [[ -z "$OTHER" ]]; then echo "safe=true" >> "$GITHUB_OUTPUT"; else echo "safe=false" >> "$GITHUB_OUTPUT"; fi
 
       - name: 校验通过且仓库可用则自动合并
@@ -70,7 +98,7 @@ jobs:
         if: steps.val.outputs.ok == 'true' && steps.files.outputs.safe != 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh pr comment "${{ github.event.pull_request.number }}" --repo "${{ github.repository }}" --body "ℹ️ 校验通过, 但该 PR 改动了 plugins.json / README.md 以外的文件, 出于安全未自动合并, 请人工审核。"
+        run: gh pr comment "${{ github.event.pull_request.number }}" --repo "${{ github.repository }}" --body "ℹ️ 校验通过, 但该 PR 改动了插件清单 (plugins.json / onebot_plugins.json) 以外的文件, 出于安全未自动合并, 请人工审核。"
 
       - name: 校验未通过则让检查失败
         if: steps.val.outputs.ok != 'true'

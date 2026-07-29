@@ -43,7 +43,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CHANGED: ${{ steps.check.outputs.changed }}
         run: |
-          if [[ -z "$(git status --porcelain plugins.json .github/health-state.json)" ]]; then
+          if [[ -z "$(git status --porcelain plugins.json onebot_plugins.json .github/health-state.json)" ]]; then
             echo "无变更，跳过"
             exit 0
           fi
@@ -66,7 +66,7 @@ jobs:
           git push origin --delete "$BRANCH" 2>/dev/null || true
 
           git checkout -b "$BRANCH"
-          git add plugins.json .github/health-state.json
+          git add plugins.json onebot_plugins.json .github/health-state.json
           git commit -m "$MSG"
           git push origin "$BRANCH"
 
