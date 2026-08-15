@@ -550,5 +550,23 @@
       "人格",
       "Skills"
     ]
+  },
+  {
+    "name": "舒尔特方格-改",
+    "type": "single",
+    "author": "涟",
+    "description": "原作者：孟夏十三   添加web面板、图片渲染",
+    "version": "1.0.0",
+    "category": "娱乐",
+    "github": "https://github.com/Philia093-root/elaina-plugins-schulte",
+    "branch": "main",
+    "path": "ShuErTe.py",
+    "alone": false,
+    "tags": [
+      "舒尔特",
+      "训练",
+      "排行",
+      "回调按钮"
+    ]
   }
 ]
