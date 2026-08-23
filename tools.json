@@ -1,0 +1,190 @@
+[
+  {
+    "id": "web_search",
+    "name": "互联网搜索",
+    "author": "ElainaBot",
+    "description": "在需要查询公开互联网即时信息时搜索网页摘要。",
+    "version": "1.0.0",
+    "github": "https://github.com/ElainaCore/ElainaBot-AIllm-agent",
+    "branch": "main",
+    "path": "web_search.py",
+    "type": "file",
+    "tags": [
+      "搜索",
+      "互联网",
+      "工具"
+    ]
+  },
+  {
+    "id": "music",
+    "name": "点歌",
+    "author": "ElainaBot",
+    "description": "在用户想听歌或点歌时搜索并直接发送歌曲语音。",
+    "version": "1.0.0",
+    "github": "https://github.com/ElainaCore/ElainaBot-AIllm-agent",
+    "branch": "main",
+    "path": "music.py",
+    "type": "file",
+    "tags": [
+      "音乐",
+      "点歌",
+      "语音"
+    ]
+  },
+  {
+    "id": "calculator",
+    "name": "计算器",
+    "author": "ElainaBot",
+    "description": "安全计算四则运算、幂、常见数学函数和常量。",
+    "version": "1.0.0",
+    "github": "https://github.com/ElainaCore/ElainaBot-AIllm-agent",
+    "branch": "main",
+    "path": "calculator.py",
+    "type": "file",
+    "tags": ["计算", "数学", "工具"]
+  },
+  {
+    "id": "current_time",
+    "name": "日期时间",
+    "author": "ElainaBot",
+    "description": "查询当前日期、星期以及指定 IANA 时区的当地时间。",
+    "version": "1.0.0",
+    "github": "https://github.com/ElainaCore/ElainaBot-AIllm-agent",
+    "branch": "main",
+    "path": "current_time.py",
+    "type": "file",
+    "tags": ["时间", "日期", "工具"]
+  },
+  {
+    "id": "unit_converter",
+    "name": "单位换算",
+    "author": "ElainaBot",
+    "description": "换算长度、面积、质量、速度、时间、温度和数据容量单位。",
+    "version": "1.0.0",
+    "github": "https://github.com/ElainaCore/ElainaBot-AIllm-agent",
+    "branch": "main",
+    "path": "unit_converter.py",
+    "type": "file",
+    "tags": ["单位", "换算", "工具"]
+  },
+  {
+    "id": "random_picker",
+    "name": "随机选择",
+    "author": "ElainaBot",
+    "description": "用于抽签、随机选择以及在多个选项中做决定。",
+    "version": "1.0.0",
+    "github": "https://github.com/ElainaCore/ElainaBot-AIllm-agent",
+    "branch": "main",
+    "path": "random_picker.py",
+    "type": "file",
+    "tags": ["随机", "抽签", "工具"]
+  },
+  {
+    "id": "text_stats",
+    "name": "文本统计",
+    "author": "ElainaBot",
+    "description": "统计中英文文本的字符、字数、行、段落、句子和字节。",
+    "version": "1.0.0",
+    "github": "https://github.com/ElainaCore/ElainaBot-AIllm-agent",
+    "branch": "main",
+    "path": "text_stats.py",
+    "type": "file",
+    "tags": ["文本", "统计", "工具"]
+  },
+  {
+    "id": "json_tool",
+    "name": "JSON 处理",
+    "author": "ElainaBot",
+    "description": "校验、格式化或压缩 JSON 文本。",
+    "version": "1.0.0",
+    "github": "https://github.com/ElainaCore/ElainaBot-AIllm-agent",
+    "branch": "main",
+    "path": "json_tool.py",
+    "type": "file",
+    "tags": ["JSON", "格式化", "工具"]
+  },
+  {
+    "id": "weather",
+    "name": "天气查询",
+    "author": "ElainaBot",
+    "description": "查询城市当前天气和未来数日天气预报。",
+    "version": "1.0.0",
+    "github": "https://github.com/ElainaCore/ElainaBot-AIllm-agent",
+    "branch": "main",
+    "path": "weather.py",
+    "type": "file",
+    "tags": ["天气", "预报", "工具"]
+  },
+  {
+    "id": "fetch_url",
+    "name": "网页信息提取",
+    "author": "ElainaBot",
+    "description": "提取公开网页的标题、描述和主要元数据。",
+    "version": "1.0.0",
+    "github": "https://github.com/ElainaCore/ElainaBot-AIllm-agent",
+    "branch": "main",
+    "path": "fetch_url.py",
+    "type": "file",
+    "tags": ["网页", "摘要", "工具"]
+  },
+  {
+    "id": "date_calculator",
+    "name": "日期计算",
+    "author": "ElainaBot",
+    "description": "计算日期加减和两个日期之间相差的天数。",
+    "version": "1.0.0",
+    "github": "https://github.com/ElainaCore/ElainaBot-AIllm-agent",
+    "branch": "main",
+    "path": "date_calculator.py",
+    "type": "file",
+    "tags": ["日期", "计算", "工具"]
+  },
+  {
+    "id": "encoder",
+    "name": "编码解码",
+    "author": "ElainaBot",
+    "description": "进行 Base64、URL 和 HTML 实体编码或解码。",
+    "version": "1.0.0",
+    "github": "https://github.com/ElainaCore/ElainaBot-AIllm-agent",
+    "branch": "main",
+    "path": "encoder.py",
+    "type": "file",
+    "tags": ["编码", "解码", "工具"]
+  },
+  {
+    "id": "hash_tool",
+    "name": "哈希计算",
+    "author": "ElainaBot",
+    "description": "计算文本哈希或 HMAC 摘要。",
+    "version": "1.0.0",
+    "github": "https://github.com/ElainaCore/ElainaBot-AIllm-agent",
+    "branch": "main",
+    "path": "hash_tool.py",
+    "type": "file",
+    "tags": ["哈希", "HMAC", "工具"]
+  },
+  {
+    "id": "number_converter",
+    "name": "进制转换",
+    "author": "ElainaBot",
+    "description": "在 2 到 36 进制之间转换整数。",
+    "version": "1.0.0",
+    "github": "https://github.com/ElainaCore/ElainaBot-AIllm-agent",
+    "branch": "main",
+    "path": "number_converter.py",
+    "type": "file",
+    "tags": ["进制", "转换", "工具"]
+  },
+  {
+    "id": "schedule_reminder",
+    "name": "定时提醒",
+    "author": "ElainaBot",
+    "description": "在当前消息所在会话创建、查看或取消一次性定时提醒，目标由程序绑定。",
+    "version": "1.0.0",
+    "github": "https://github.com/ElainaCore/ElainaBot-AIllm-agent",
+    "branch": "main",
+    "path": "schedule_reminder.py",
+    "type": "file",
+    "tags": ["定时", "提醒", "任务"]
+  }
+]
