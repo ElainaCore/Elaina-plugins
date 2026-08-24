@@ -599,19 +599,5 @@
             "点歌",
             "歌词"
         ]
-  },
-  {
-        "name": "和风天气查询",
-        "type": "complete",
-        "author": "飞行漂线",
-        "description": "和风天气API查询 需自行填写api key和api host",
-        "version": "1.0.0",
-        "category": "娱乐",
-        "github": "https://github.com/cyrene-093/weather_release",
-        "branch": "main",
-        "tags": [
-            "娱乐",
-            "天气"
-        ]
-    }
+  }
 ]
