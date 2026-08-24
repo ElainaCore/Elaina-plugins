@@ -590,7 +590,7 @@
         "type": "complete",
         "author": "飞行漂线",
         "description": "QQ音乐点歌：搜索/音源/完整歌词，个人/群/全局歌词开关，Web管理面板",
-        "version": "1.4.1",
+        "version": "1.4.5",
         "category": "娱乐",
         "github": "https://github.com/cyrene-093/qq_music",
         "branch": "main",
