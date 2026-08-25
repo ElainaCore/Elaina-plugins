@@ -32,7 +32,7 @@ jobs:
         run: |
           # 这里改成你的上游仓库地址
           # 格式：https://github.com/原作者/原仓库.git
-          git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPO.git
+          git remote add upstream https://github.com/yhkj-nb/Elaina-plugins.git
           git fetch upstream
           
       - name: Merge upstream changes
