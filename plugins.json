@@ -638,5 +638,21 @@
       "拦截",
       "防刷屏"
     ]
+  }，
+  {
+    "name": "台风查询",
+    "type": "single",
+    "author": "飞行漂绒",
+    "description": "台风简易查询插件 原茉莉奶绿改的",
+    "version": "1.0.0",
+    "category": "工具",
+    "github": "https://github.com/cyrene-093/ElainaBot_plugins_fei",
+    "branch": "main",
+    "path": "台风插件/台风合.py",
+    "tags": [
+      "工具",
+      "台风"
+    ]
   }
-]
+  
+
