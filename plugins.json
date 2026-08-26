@@ -638,5 +638,23 @@
       "拦截",
       "防刷屏"
     ]
+  }，
+  {
+  "name": "台风查询",
+  "type": "single",
+  "author": "飞行漂绒",
+  "description": "中央气象台台风查询：优先官网路径产品图，没有则本地气泡路径图；活跃台风附防御建议",
+  "version": "1.0.0",
+  "category": "工具",
+  "github": "https://github.com/cyrene-093/ElainaBot_plugins_fei",
+  "branch": "main",
+  "path": "台风插件/台风合.py",
+  "alone": true,
+  "tags": [
+    "台风", 
+    "气象", 
+    "路径图"
+    ]
   }
 ]
+  
