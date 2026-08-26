@@ -625,14 +625,14 @@
   },
   {
     "name": "云痕自动拦截",
-    "type": "complete",
+    "type": "single",
     "author": "云痕",
     "description": "检测机器人互@刷屏，自动撤回并停止回复",
     "version": "1.0.0",
     "category": "工具",
     "github": "https://github.com/yhkj-nb/Yh-Elaina-plugins",
     "branch": "main",
-    "path": "Auto_Block",
+    "path": "Auto_Block/auto_intercept.py",
     "tags": [
       "工具",
       "拦截",
