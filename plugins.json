@@ -632,7 +632,7 @@
     "category": "工具",
     "github": "https://github.com/yhkj-nb/Yh-Elaina-plugins",
     "branch": "main",
-    "path": "Auto_Block/auto_intercept.py",
+    "path": "Auto_Block/自动拦截.py",
     "tags": [
       "工具",
       "拦截",
