@@ -622,5 +622,21 @@
             "签到",
             "红包"
         ]
+  },
+  {
+    "name": "云痕自动拦截",
+    "type": "complete",
+    "author": "云痕",
+    "description": "检测机器人互@刷屏，自动撤回并停止回复",
+    "version": "1.0.0",
+    "category": "工具",
+    "github": "https://github.com/yhkj-nb/Yh-Elaina-plugins",
+    "branch": "main",
+    "path": "Auto_Block",
+    "tags": [
+      "工具",
+      "拦截",
+      "防刷屏"
+    ]
   }
 ]
