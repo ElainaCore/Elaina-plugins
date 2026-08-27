@@ -644,11 +644,11 @@
     "type": "single",
     "author": "飞行漂绒",
     "description": "简易的台风查询插件（闲）",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "category": "工具",
     "github": "https://github.com/cyrene-093/ElainaBot_plugins_fei",
     "branch": "main",
-    "path": "台风插件/台风合.py",
+    "path": "台风插件/台风.py",
     "tags": [
       "工具",
       "台风",
