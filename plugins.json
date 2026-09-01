@@ -20,7 +20,7 @@
     "type": "complete",
     "author": "冷曦",
     "description": "接入中央 AI LLM 自主开发插件，支持后台任务与断线恢复",
-    "version": "1.2.5",
+    "version": "1.2.6",
     "category": "工具",
     "github": "https://github.com/lengxi-root/elaina-plugins-lengxi",
     "branch": "main",
