@@ -163,7 +163,7 @@
     "type": "complete",
     "author": "铁蛋",
     "description": "基于 C++ 的 LGTBot 游戏裁判机器人：支持 50+ 种多人游戏，将聊天室打造成游戏竞技平台。免编译部署（仅Linux）",
-    "version": "2.11.1",
+    "version": "2.11.2",
     "category": "游戏",
     "github": "https://github.com/tiedanGH/LGTBot_ElainaBot",
     "branch": "main",
