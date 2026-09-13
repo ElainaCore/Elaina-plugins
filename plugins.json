@@ -130,7 +130,7 @@
     "type": "module",
     "author": "ElainaBot",
     "description": "渲染引擎: PIL 子进程渲染池 + Playwright 浏览器渲染统一管理, 全局共享按需启停",
-    "version": "2.2.3",
+    "version": "2.2.4",
     "category": "服务",
     "github": "https://github.com/ElainaCore/Elainabot_v2-modules",
     "branch": "main",
