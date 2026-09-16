@@ -32,18 +32,19 @@
     ]
   },
   {
-    "name": "工作流API",
+    "name": "腾讯频道",
     "type": "complete",
-    "author": "冷曦",
-    "description": "可视化工作流自定义API，热更新，支持变量与节点输出",
-    "version": "2.0.1",
+    "author": "ElainaBot",
+    "description": "腾讯频道管理：指令 + Web 管理面板 + 定时发帖（Cron），仅限插件管理员使用",
+    "version": "1.0.0",
     "category": "工具",
-    "github": "https://github.com/lengxi-root/elaina-plugins-lengxi",
+    "github": "https://github.com/ElainaCore/elaina-plugin-Tencent_Channel",
     "branch": "main",
     "tags": [
-      "工具"
-    ],
-    "path": "workflowapi"
+      "工具",
+      "频道",
+      "web"
+    ]
   },
   {
     "name": "熵增基座",
@@ -673,5 +674,19 @@
       "点歌",
       "Web面板"
     ]
+  },
+  {
+    "name": "工作流API",
+    "type": "complete",
+    "author": "冷曦",
+    "description": "可视化工作流自定义API，热更新，支持变量与节点输出",
+    "version": "2.0.1",
+    "category": "工具",
+    "github": "https://github.com/lengxi-root/elaina-plugins-lengxi",
+    "branch": "main",
+    "tags": [
+      "工具"
+    ],
+    "path": "workflowapi"
   }
 ]
