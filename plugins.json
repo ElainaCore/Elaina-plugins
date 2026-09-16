@@ -32,7 +32,7 @@
     ]
   },
   {
-    "name": "腾讯频道",
+    "name": "腾讯频道(新)",
     "type": "complete",
     "author": "ElainaBot",
     "description": "腾讯频道管理：指令 + Web 管理面板 + 定时发帖（Cron），仅限插件管理员使用",
