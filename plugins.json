@@ -467,7 +467,7 @@
     "type": "complete",
     "author": "miaolik",
     "description": "腾讯频道Skill插件版，腾讯频道管理：指令 + Web 管理面板 + 定时发帖（Cron），仅限插件管理员使用 Web 后台",
-    "version": "3.0.0",
+    "version": "3.1.0",
     "category": "Skill",
     "github": "https://github.com/miaolik/txpd",
     "branch": "main",
