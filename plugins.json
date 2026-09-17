@@ -688,5 +688,21 @@
       "工具"
     ],
     "path": "workflowapi"
+  },
+  {
+    "name": "QQ官方文档监控",
+    "type": "complete",
+    "author": "冷曦",
+    "description": "监控 QQ 开放平台官方开发文档，检测页面新增/修改/删除并推送正文差异",
+    "version": "1.1.0",
+    "category": "工具",
+    "github": "https://github.com/lengxi-root/elaina-plugins-lengxi",
+    "branch": "main",
+    "path": "QQ官方文档监控",
+    "tags": [
+      "工具",
+      "监控",
+      "订阅"
+    ]
   }
 ]
