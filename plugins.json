@@ -710,7 +710,7 @@
     "type": "complete",
     "author": "冷曦",
     "description": "王者荣耀战绩查询: 营地ID绑定(多账号)、主页/战绩/单局详情、英雄战力/攻略/梯度榜、皮肤墙、日周月报与群战绩订阅推送",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "category": "游戏",
     "github": "https://github.com/lengxi-root/elaina-plugins-lengxi",
     "branch": "main",
