@@ -23,11 +23,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 检出 base 分支 (可信脚本)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: ${{ github.event.pull_request.base.sha }}
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 

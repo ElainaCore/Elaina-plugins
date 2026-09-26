@@ -1,5 +1,6 @@
 # CI 运行时生成的临时文件
 .github/pr-report.md
 .github/health-report.md
+.github/version-report.md
 __pycache__/
 *.pyc

@@ -1,0 +1,45 @@
+name: 插件源码版本同步
+
+on:
+  schedule:
+    # 每小时的第 17 分钟运行，避开整点高峰。
+    - cron: '17 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: plugin-version-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: 运行版本同步器测试
+        run: python -m unittest discover -s .github/scripts -p 'test_version_sync.py'
+
+      - name: 检查源码版本并更新市场清单
+        id: sync
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python .github/scripts/version_sync.py
+
+      - name: 提交更新后的版本号
+        if: steps.sync.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add plugins.json
+          git commit -m "chore(market): 自动同步插件版本"
+          git pull --rebase origin main
+          git push origin HEAD:main

@@ -9,6 +9,34 @@ ElainaBot 官方插件与模块市场 — 在这里发现和分享插件/模块
 
 </div>
 
+## AI LLM 模型工具清单
+
+AI LLM 使用仓库根目录的 `tools.json` 作为模型工具清单。服务会复用框架的 GitHub 镜像设置下载并安装清单中的工具。
+
+模型工具支持两种发布形式：
+
+- `file`：`path` 指向一个独立 `.py` 文件。
+- `folder`：`path` 指向一个完整文件夹，文件夹根目录必须包含 `tool.py`；同目录内可放置相对导入模块、静态数据和资源文件。
+
+每个模型工具的入口必须声明静态 `TOOL` 字典，并提供 `run(arguments, context)` 函数。清单中的 `id` 必须与入口文件内 `TOOL['id']` 完全一致。
+
+```json
+{
+  "id": "example",
+  "name": "示例模型工具",
+  "author": "作者",
+  "description": "说明模型应该在什么情况下调用。",
+  "version": "1.0.0",
+  "github": "https://github.com/user/repository",
+  "branch": "main",
+  "path": "tools/example",
+  "type": "folder",
+  "tags": ["工具"]
+}
+```
+
+字段要求：`id` 只能使用小写字母、数字、下划线和连字符，并以字母开头；`github` 必须是 GitHub 仓库地址；`branch` 默认为 `main`；`path` 不能包含绝对路径或 `..` 路径；`type` 只能是 `file` 或 `folder`。
+
 ## 🔌 如何提交插件
 
 ### 第一步：准备你的插件仓库
@@ -75,6 +103,8 @@ __plugin_meta__ = {
 
 #### 字段说明
 
+市场每小时读取插件源码中的静态版本声明，并且只在源码版本高于市场版本时更新 `version`。默认检查 `path` 指向的文件，或插件目录下的 `main.py`、`index.py`、`app.py`、`__init__.py`、`package.json`、`pyproject.toml`；不会执行远程代码，也不会自动降级。
+
 | 字段 | 必填 | 说明 |
 |------|------|------|
 | `name` | ✅ | 名称, 安装后的目录名 (`plugins/<name>` 或 `modules/<name>`) |
@@ -87,6 +117,8 @@ __plugin_meta__ = {
 | `branch` | ❌ | 分支名，默认 `main` |
 | `path` | ❌ | 仓库内路径 (字符串)：一个文件，或一个子目录。指向子目录时会下载该目录下**全部**文件 (含 html 等附属文件)。`complete` 用它选一仓多插件里的某个子目录；`single` 用它指向单文件或其所在子目录 |
 | `alone` | ❌ | `single` 专用：默认 `true` 装到共享 `plugins/alone/<name>.py` (仅单文件)；显式 `false` 时装到专属目录 `plugins/<name>/` (支持多文件，用 `path` 指向子目录整目录下载) |
+| `auto_update_version` | ❌ | 是否参与每小时源码版本同步，默认 `true`；设为 `false` 可退出自动版本更新 |
+| `version_source` | ❌ | 版本声明文件的仓库内相对路径；默认入口无法唯一确定版本时设置，支持 `.py`、`.json`、`.toml` |
 | `tags` | ❌ | 标签数组，用于搜索 |
 
 > **独立插件要下多个文件 (如 .py + .html)？** 把这几个文件放进仓库的同一个子目录，然后 `alone: false` + `path` 指向该子目录 (或目录下任一文件)，安装时整个子目录会一起下到 `plugins/<name>/`。

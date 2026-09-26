@@ -14,6 +14,7 @@
 import json
 import os
 import sys
+from pathlib import PurePosixPath
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import (  # noqa: E402
@@ -43,6 +44,17 @@ def _load(path):
         return json.load(f)
 
 
+def _valid_version_source(value):
+    if not isinstance(value, str) or not value.strip() or "\\" in value:
+        return False
+    path = PurePosixPath(value.strip())
+    return (
+        not path.is_absolute()
+        and ".." not in path.parts
+        and path.suffix.lower() in (".py", ".json", ".toml")
+    )
+
+
 def validate_schema(data):
     """返回错误信息列表 (空列表代表通过)。"""
     errors = []
@@ -65,6 +77,12 @@ def validate_schema(data):
             errors.append(f'{tag}: type 非法 `{t}` (只能是 {"/".join(ALLOWED_TYPES)})')
         if 'alone' in e and not isinstance(e['alone'], bool):
             errors.append(f'{tag}: alone 必须是布尔值')
+        if 'auto_update_version' in e and not isinstance(e['auto_update_version'], bool):
+            errors.append(f'{tag}: auto_update_version 必须是布尔值')
+        if 'version_source' in e and not _valid_version_source(e['version_source']):
+            errors.append(
+                f'{tag}: version_source 必须是仓库内的相对 .py/.json/.toml 文件路径'
+            )
         if 'tags' in e and not (isinstance(e['tags'], list) and all(isinstance(x, str) for x in e['tags'])):
             errors.append(f'{tag}: tags 必须是字符串数组')
         if e.get('github') and parse_repo(e['github']) is None:
