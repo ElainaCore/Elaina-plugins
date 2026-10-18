@@ -721,5 +721,20 @@
       "王者荣耀",
       "查询"
     ]
+  },
+  {
+    "name": "theme_manager",
+    "type": "module",
+    "author": "ElainaBot",
+    "description": "登录主题管理: 多主题启用/编辑/重置/恢复, 内置原版登录兜底, 含主题包与 Web 面板",
+    "version": "1.0.0",
+    "category": "服务",
+    "github": "https://github.com/00000002darling-bit/theme_manager",
+    "branch": "main",
+    "tags": [
+      "主题",
+      "登录",
+      "Web面板"
+    ]
   }
 ]
