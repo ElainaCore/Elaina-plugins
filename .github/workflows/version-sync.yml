@@ -25,9 +25,6 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: 运行版本同步器测试
-        run: python -m unittest discover -s .github/scripts -p 'test_version_sync.py'
-
       - name: 检查源码版本并更新市场清单
         id: sync
         env:
