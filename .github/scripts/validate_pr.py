@@ -14,6 +14,7 @@
 import json
 import os
 import sys
+import unicodedata
 from pathlib import PurePosixPath
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -72,6 +73,8 @@ def validate_schema(data):
         for k in REQUIRED_FIELDS:
             if not e.get(k):
                 errors.append(f'{tag}: 缺少必填字段 `{k}`')
+        if 'author' in e and (not isinstance(e['author'], str) or not e['author'].strip()):
+            errors.append(f'{tag}: author 必须是非空字符串')
         t = e.get('type', '')
         if t and t not in ALLOWED_TYPES:
             errors.append(f'{tag}: type 非法 `{t}` (只能是 {"/".join(ALLOWED_TYPES)})')
@@ -154,6 +157,17 @@ def changed_entries(head, base):
     return [e for e in head if isinstance(e, dict) and _key(e) not in base_keys]
 
 
+def validate_reserved_author(head, base):
+    """禁止 PR 新增/修改使用官方保留作者名的条目，不按提交者权限豁免。"""
+    errors = []
+    for entry in changed_entries(head, base):
+        author = entry.get('author', '')
+        if isinstance(author, str) and unicodedata.normalize('NFKC', author).strip().casefold() == 'elainabot':
+            name = entry.get('name', '?')
+            errors.append(f'`{name}`: author `ElainaBot` 为官方保留名称，禁止通过 PR 新增或修改使用该作者名的条目')
+    return errors
+
+
 def check_availability(entry):
     """检查单个条目的仓库/分支/路径可用性, 返回 (ok, messages)。"""
     name = entry.get('name', '?')
@@ -212,7 +226,11 @@ def main():
     # 2) schema
     errors = validate_schema(head)
 
-    # 2.5) 顺序与归属校验 (仅在 schema 通过且有 base 可比对时)
+    # 2.5) 官方作者名保护 (仅检查新增/改动条目，无权限豁免)
+    if not errors:
+        errors += validate_reserved_author(head, base)
+
+    # 2.6) 顺序与归属校验 (仅在前述校验通过且有 base 可比对时)
     if not errors and base is not None:
         errors += validate_order(head, base)
         author = os.environ.get('PR_AUTHOR', '')
