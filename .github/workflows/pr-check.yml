@@ -31,6 +31,9 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: 运行 PR 校验器测试
+        run: python -m unittest discover -s .github/scripts -p 'test_validate_pr.py'
+
       - name: 取 base 与 PR 的插件清单
         run: |
           git fetch origin "pull/${{ github.event.pull_request.number }}/head"
@@ -48,7 +51,7 @@ jobs:
           echo "作者权限: $PERM"
           echo "perm=$PERM" >> "$GITHUB_OUTPUT"
 
-      - name: 校验 JSON 格式 + schema + 归属/顺序 + 仓库可用性
+      - name: 校验 JSON 格式 + schema + 官方作者名 + 归属/顺序 + 仓库可用性
         id: val
         continue-on-error: true
         env:

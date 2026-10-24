@@ -20,7 +20,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-MANIFEST = ROOT / "plugins.json"
+MANIFESTS = (ROOT / "plugins.json", ROOT / "onebot_plugins.json")
 REPORT = ROOT / ".github" / "version-report.md"
 API = "https://api.github.com"
 DEFAULT_SOURCES = (
@@ -226,21 +226,24 @@ def sync_entries(entries, dry_run=False):
 
 
 def main(argv=None):
-    argv = argv or sys.argv[1:]
+    argv = sys.argv[1:] if argv is None else argv
     dry_run = "--dry-run" in argv
-    with open(MANIFEST, encoding="utf-8") as handle:
-        entries = json.load(handle)
-    changed, skipped = sync_entries(entries, dry_run=dry_run)
-    if changed and not dry_run:
-        with open(MANIFEST, "w", encoding="utf-8") as handle:
-            json.dump(entries, handle, ensure_ascii=False, indent=2)
-            handle.write("\n")
-    REPORT.parent.mkdir(parents=True, exist_ok=True)
     report = ["# 插件源码版本同步报告", "", f"模式: {'dry-run' if dry_run else 'write'}", ""]
-    report += ["## 已更新", ""] + (changed or ["- 无"])
-    report += ["", "## 跳过或无需更新", ""] + (skipped or ["- 无"])
+    count = 0
+    for manifest in MANIFESTS:
+        with open(manifest, encoding="utf-8") as handle:
+            entries = json.load(handle)
+        changed, skipped = sync_entries(entries, dry_run=dry_run)
+        count += len(changed)
+        if changed and not dry_run:
+            with open(manifest, "w", encoding="utf-8") as handle:
+                json.dump(entries, handle, ensure_ascii=False, indent=2)
+                handle.write("\n")
+        report += [f"## {manifest.name}", "", "### 已更新", ""] + (changed or ["- 无"])
+        report += ["", "### 跳过或无需更新", ""] + (skipped or ["- 无"]) + [""]
+    REPORT.parent.mkdir(parents=True, exist_ok=True)
     REPORT.write_text("\n".join(report) + "\n", encoding="utf-8")
-    _set_output(changed=str(bool(changed)).lower(), count=str(len(changed)))
+    _set_output(changed=str(bool(count)).lower(), count=str(count))
     print("\n".join(report))
     return 0
 
