@@ -1,4 +1,4 @@
-"""每日检查插件清单 (plugins.json / onebot_plugins.json) 中各插件仓库是否可访问。
+"""每日检查插件清单 (plugins.json / modules.json) 中各插件仓库是否可访问。
 
 - 首次检测到某仓库不可访问: 记录失败时间并告警。
 - 持续不可访问超过宽限期 (默认 24 小时): 自动删除该仓库对应的所有插件索引。
@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import dump_plugins, load_plugins, parse_repo, repo_available  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-MANIFESTS = [os.path.join(ROOT, 'plugins.json'), os.path.join(ROOT, 'onebot_plugins.json')]
+MANIFESTS = [os.path.join(ROOT, 'plugins.json'), os.path.join(ROOT, 'modules.json')]
 STATE = os.path.join(ROOT, '.github', 'health-state.json')
 REPORT = os.path.join(ROOT, '.github', 'health-report.md')
 

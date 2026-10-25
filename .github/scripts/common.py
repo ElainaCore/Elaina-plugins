@@ -6,7 +6,10 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-ALLOWED_TYPES = ('complete', 'single', 'module')
+MANIFEST_TYPES = {
+    'plugins.json': ('complete', 'single'),
+    'modules.json': ('module',),
+}
 REQUIRED_FIELDS = ('name', 'type', 'author', 'description', 'version', 'category', 'github')
 
 API = 'https://api.github.com'

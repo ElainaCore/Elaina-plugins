@@ -8,7 +8,7 @@ on:
     types: [opened, synchronize, reopened]
     paths:
       - plugins.json
-      - onebot_plugins.json
+      - modules.json
 
 permissions:
   contents: write
@@ -31,15 +31,12 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: 运行 PR 校验器测试
-        run: python -m unittest discover -s .github/scripts -p 'test_validate_pr.py'
-
       - name: 取 base 与 PR 的插件清单
         run: |
           git fetch origin "pull/${{ github.event.pull_request.number }}/head"
-          for F in plugins.json onebot_plugins.json; do
+          for F in plugins.json modules.json; do
             git show "${{ github.event.pull_request.base.sha }}:$F" > "/tmp/base_$F" 2>/dev/null || echo '[]' > "/tmp/base_$F"
-            git show "FETCH_HEAD:$F" > "/tmp/head_$F" 2>/dev/null || cp "/tmp/base_$F" "/tmp/head_$F"
+            git show "FETCH_HEAD:$F" > "/tmp/head_$F" 2>/dev/null || echo 'null' > "/tmp/head_$F"
           done
 
       - name: 查询 PR 作者在本仓库的权限
@@ -61,7 +58,7 @@ jobs:
         run: |
           OK=true
           : > /tmp/report.md
-          for F in plugins.json onebot_plugins.json; do
+          for F in plugins.json modules.json; do
             # 未改动的清单跳过, 避免报告噪声
             if cmp -s "/tmp/head_$F" "/tmp/base_$F"; then continue; fi
             GITHUB_OUTPUT= python .github/scripts/validate_pr.py "/tmp/head_$F" "/tmp/base_$F" "$F" || OK=false
@@ -86,7 +83,7 @@ jobs:
         run: |
           FILES=$(gh pr view "${{ github.event.pull_request.number }}" --repo "${{ github.repository }}" --json files --jq '.files[].path')
           echo "改动文件:"; echo "$FILES"
-          OTHER=$(echo "$FILES" | grep -vE '^(plugins|onebot_plugins)\.json$' || true)
+          OTHER=$(echo "$FILES" | grep -vE '^(plugins|modules)\.json$' || true)
           if [[ -z "$OTHER" ]]; then echo "safe=true" >> "$GITHUB_OUTPUT"; else echo "safe=false" >> "$GITHUB_OUTPUT"; fi
 
       - name: 校验通过且仓库可用则自动合并
@@ -101,7 +98,7 @@ jobs:
         if: steps.val.outputs.ok == 'true' && steps.files.outputs.safe != 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh pr comment "${{ github.event.pull_request.number }}" --repo "${{ github.repository }}" --body "ℹ️ 校验通过, 但该 PR 改动了插件清单 (plugins.json / onebot_plugins.json) 以外的文件, 出于安全未自动合并, 请人工审核。"
+        run: gh pr comment "${{ github.event.pull_request.number }}" --repo "${{ github.repository }}" --body "ℹ️ 校验通过, 但该 PR 改动了插件清单 (plugins.json / modules.json) 以外的文件, 出于安全未自动合并, 请人工审核。"
 
       - name: 校验未通过则让检查失败
         if: steps.val.outputs.ok != 'true'

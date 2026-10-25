@@ -79,87 +79,6 @@
     ]
   },
   {
-    "name": "image_hosting",
-    "type": "module",
-    "author": "ElainaBot",
-    "description": "统一图床上传，用于markdown图片链接发送",
-    "version": "2.3.0",
-    "version_source": "modules/image_hosting/main.py",
-    "category": "服务",
-    "github": "https://github.com/ElainaCore/ElainaBot_v2",
-    "branch": "main",
-    "tags": [
-      "图床",
-      "上传",
-      "COS"
-    ]
-  },
-  {
-    "name": "sdktool",
-    "type": "module",
-    "author": "ElainaBot",
-    "description": "在 Python 主框架中运行基于 JavaScript SDK 的独立进程插件",
-    "version": "0.2.0",
-    "category": "开发",
-    "github": "https://github.com/ElainaCore/Elainabot_v2-modules",
-    "branch": "main",
-    "path": "sdktool",
-    "tags": [
-      "SDK",
-      "JavaScript",
-      "Node.js"
-    ]
-  },
-  {
-    "name": "datastore",
-    "type": "module",
-    "author": "ElainaBot",
-    "description": "MySQL + Redis 统一数据存储模块, 异步连接池与完整 CRUD / 缓存操作",
-    "version": "1.1.2",
-    "category": "服务",
-    "github": "https://github.com/ElainaCore/Elainabot_v2-modules",
-    "branch": "main",
-    "path": "datastore",
-    "tags": [
-      "数据库",
-      "MySQL",
-      "Redis"
-    ]
-  },
-  {
-    "name": "renderer",
-    "type": "module",
-    "author": "ElainaBot",
-    "description": "渲染引擎: PIL 子进程渲染池 + Playwright 浏览器渲染统一管理, 全局共享按需启停",
-    "version": "2.2.5",
-    "category": "服务",
-    "github": "https://github.com/ElainaCore/Elainabot_v2-modules",
-    "branch": "main",
-    "path": "renderer",
-    "tags": [
-      "渲染",
-      "截图",
-      "PIL",
-      "Playwright"
-    ]
-  },
-  {
-    "name": "onebot_adapter",
-    "type": "module",
-    "author": "Elaina",
-    "description": "OneBot 11 协议适配器, 将消息/事件推送到外部机器人框架",
-    "version": "2.0.0",
-    "category": "适配器",
-    "github": "https://github.com/ElainaCore/Elainabot_v2-modules",
-    "branch": "main",
-    "path": "onebot_adapter",
-    "tags": [
-      "OneBot",
-      "适配器",
-      "WebSocket"
-    ]
-  },
-  {
     "name": "LGTBot_ElainaBot",
     "type": "complete",
     "author": "铁蛋",
@@ -537,24 +456,6 @@
       "微信ClawBot",
       "工具",
       "AI"
-    ]
-  },
-  {
-    "name": "ai_llm",
-    "type": "module",
-    "author": "ElainaBot",
-    "description": "统一管理 OpenAI 兼容接口、模型优先级、自动故障切换、模型工具、插件 Agent、MCP、Skills 和计划任务",
-    "version": "1.2.5",
-    "category": "服务",
-    "github": "https://github.com/ElainaCore/Elainabot_v2-modules",
-    "branch": "main",
-    "path": "ai_llm",
-    "tags": [
-      "AI",
-      "LLM",
-      "模型工具",
-      "MCP",
-      "服务"
     ]
   },
   {

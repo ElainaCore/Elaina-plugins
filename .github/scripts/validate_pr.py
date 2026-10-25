@@ -1,4 +1,4 @@
-"""校验 PR 中的插件清单 (plugins.json / onebot_plugins.json): 格式 + schema + 新增/改动条目的仓库可用性。
+"""校验 PR 中的插件清单 (plugins.json / modules.json): 格式 + schema + 新增/改动条目的仓库可用性。
 
 用法: python validate_pr.py <head.json> [base.json] [清单名]
 
@@ -19,7 +19,7 @@ from pathlib import PurePosixPath
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import (  # noqa: E402
-    ALLOWED_TYPES,
+    MANIFEST_TYPES,
     REQUIRED_FIELDS,
     branch_available,
     parse_repo,
@@ -56,9 +56,12 @@ def _valid_version_source(value):
     )
 
 
-def validate_schema(data):
+def validate_schema(data, manifest='plugins.json'):
     """返回错误信息列表 (空列表代表通过)。"""
     errors = []
+    allowed_types = MANIFEST_TYPES.get(manifest)
+    if allowed_types is None:
+        return [f'不支持的清单 `{manifest}`']
     if not isinstance(data, list):
         return ['清单顶层必须是数组']
     seen = set()
@@ -76,8 +79,8 @@ def validate_schema(data):
         if 'author' in e and (not isinstance(e['author'], str) or not e['author'].strip()):
             errors.append(f'{tag}: author 必须是非空字符串')
         t = e.get('type', '')
-        if t and t not in ALLOWED_TYPES:
-            errors.append(f'{tag}: type 非法 `{t}` (只能是 {"/".join(ALLOWED_TYPES)})')
+        if t and t not in allowed_types:
+            errors.append(f'{tag}: {manifest} 中 type 非法 `{t}` (只能是 {"/".join(allowed_types)})')
         if 'alone' in e and not isinstance(e['alone'], bool):
             errors.append(f'{tag}: alone 必须是布尔值')
         if 'auto_update_version' in e and not isinstance(e['auto_update_version'], bool):
@@ -209,7 +212,7 @@ def main():
     try:
         head = _load(head_path)
     except Exception as e:
-        lines += ['### ❌ JSON 解析失败', '', f'```\n{e}\n```', '', '请检查 plugins.json 是否为合法 JSON (逗号/引号/括号)。']
+        lines += ['### ❌ JSON 解析失败', '', f'```\n{e}\n```', '', f'请检查 {label} 是否为合法 JSON (逗号/引号/括号)。']
         with open(REPORT, 'w', encoding='utf-8') as f:
             f.write('\n'.join(lines) + '\n')
         _set_output(ok='false')
@@ -224,7 +227,7 @@ def main():
             base = None
 
     # 2) schema
-    errors = validate_schema(head)
+    errors = validate_schema(head, label)
 
     # 2.5) 官方作者名保护 (仅检查新增/改动条目，无权限豁免)
     if not errors:

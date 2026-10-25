@@ -9,6 +9,8 @@ ElainaBot 官方插件与模块市场 — 在这里发现和分享插件/模块
 
 </div>
 
+插件与模块分开维护：`plugins.json` 只存放插件，`modules.json` 只存放模块。框架市场分别读取两份清单；OneBot 插件清单已停用。
+
 ## AI LLM 模型工具清单
 
 AI LLM 使用仓库根目录的 `tools.json` 作为模型工具清单。服务会复用框架的 GitHub 镜像设置下载并安装清单中的工具。
@@ -103,12 +105,12 @@ __plugin_meta__ = {
 
 #### 字段说明
 
-市场每小时读取插件源码中的静态版本声明，同时同步普通插件清单 `plugins.json` 和 OneBot 插件清单 `onebot_plugins.json`，并且只在源码版本高于市场版本时更新 `version`。两份清单均支持 `auto_update_version` 和 `version_source`。默认检查 `path` 指向的文件，或插件目录下的 `main.py`、`index.py`、`app.py`、`__init__.py`、`package.json`、`pyproject.toml`；不会执行远程代码，也不会自动降级。
+市场每小时读取插件源码中的静态版本声明，同时同步插件清单 `plugins.json` 和模块清单 `modules.json`，并且只在源码版本高于市场版本时更新 `version`。两份清单均支持 `auto_update_version` 和 `version_source`。默认检查 `path` 指向的文件，或插件目录下的 `main.py`、`index.py`、`app.py`、`__init__.py`、`package.json`、`pyproject.toml`；不会执行远程代码，也不会自动降级。
 
 | 字段 | 必填 | 说明 |
 |------|------|------|
 | `name` | ✅ | 名称, 安装后的目录名 (`plugins/<name>` 或 `modules/<name>`) |
-| `type` | ✅ | 类型: `complete` (完整插件) / `single` (独立插件) / `module` (模块) |
+| `type` | ✅ | `plugins.json` 仅允许 `complete` (完整插件) / `single` (独立插件)；`modules.json` 仅允许 `module` (模块) |
 | `author` | ✅ | 作者名 |
 | `description` | ✅ | 描述 |
 | `version` | ✅ | 版本号 |
@@ -202,7 +204,7 @@ __module_meta__ = {
 ### 第三步：提交 PR
 
 1. Fork 本仓库
-2. 编辑 `plugins.json`，添加你的模块信息
+2. 编辑 `modules.json`，添加你的模块信息（`type` 必须为 `module`）
 3. 提交 Pull Request
 
 ```json
@@ -226,8 +228,8 @@ __module_meta__ = {
 - 额外 pip 依赖请在仓库中提供 `requirements.txt`
 - 插件代码必须包含 `__plugin_meta__`，模块必须包含 `__module_meta__`
 - PR 只能新增/修改/删除**属于你自己 GitHub 账号仓库**的插件条目，不能改动他人的条目
-- `ElainaBot` 为官方保留作者名，PR 中新增或修改的条目禁止使用该 `author`（不区分大小写，并统一全角字符和首尾空白）；此规则适用于两份插件清单且无提交者权限豁免，现有未改动的官方条目不受影响
-- 新插件请**追加到清单末尾**（`plugins.json` / `onebot_plugins.json`），不要插入到已有插件之间，也不要调整已有插件顺序
-- 自动合并仅在 PR 只改动 `plugins.json` / `onebot_plugins.json` 时生效；改动其他文件需人工审核
+- `ElainaBot` 为官方保留作者名，PR 中新增或修改的条目禁止使用该 `author`（不区分大小写，并统一全角字符和首尾空白）；此规则适用于插件和模块两份清单且无提交者权限豁免，现有未改动的官方条目不受影响
+- 新插件或模块请**追加到对应清单末尾**（`plugins.json` / `modules.json`），不要插入到已有插件之间，也不要调整已有插件顺序
+- 自动合并仅在 PR 只改动 `plugins.json` / `modules.json` 时生效；改动其他文件需人工审核
 - 禁止提交恶意代码、违法内容
 

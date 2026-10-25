@@ -20,7 +20,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-MANIFESTS = (ROOT / "plugins.json", ROOT / "onebot_plugins.json")
+MANIFESTS = (ROOT / "plugins.json", ROOT / "modules.json")
 REPORT = ROOT / ".github" / "version-report.md"
 API = "https://api.github.com"
 DEFAULT_SOURCES = (
