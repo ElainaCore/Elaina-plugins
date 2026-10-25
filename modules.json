@@ -85,7 +85,7 @@
     "type": "module",
     "author": "ElainaBot",
     "description": "统一管理 OpenAI 兼容接口、模型优先级、自动故障切换、模型工具、插件 Agent、MCP、Skills 和计划任务",
-    "version": "1.2.5",
+    "version": "1.3.1",
     "category": "服务",
     "github": "https://github.com/ElainaCore/Elainabot_v2-modules",
     "branch": "main",
