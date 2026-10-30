@@ -622,5 +622,23 @@
       "王者荣耀",
       "查询"
     ]
+  },
+  {
+    "name": "模板工坊",
+    "type": "complete",
+    "author": "幻想",
+    "description": "侧边栏可视化编辑 QQ Markdown 消息与按钮，实时预览并导出 4 种可直接落地的 JSON（templates.yaml / 平台 keyboard / 插件存储 / 发送 payload）",
+    "version": "1.0.0",
+    "category": "工具",
+    "github": "https://github.com/Mitpoppy/Elaina-plugin-TemplateStudio",
+    "branch": "main",
+    "tags": [
+      "模板",
+      "Markdown",
+      "按钮",
+      "JSON",
+      "工具",
+      "web"
+    ]
   }
 ]
