@@ -67,7 +67,7 @@
     "type": "complete",
     "author": "云痕",
     "description": "为框架提供备份与迁移功能，支持上传云盘",
-    "version": "2.1.0",
+    "version": "2.7.0",
     "version_source": "main.py",
     "category": "工具",
     "github": "https://github.com/yhkj-nb/elaina-backup-manager",
