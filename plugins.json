@@ -630,7 +630,7 @@
     "type": "complete",
     "author": "冷曦、24801816",
     "description": "QQ音乐点歌与语音播放，支持个人扫码登录、绿钻账号池轮询",
-    "version": "1.0.1",
+    "version": "1.0.7",
     "category": "娱乐",
     "github": "https://github.com/lengxi-root/elaina-plugins-lengxi",
     "branch": "main",
