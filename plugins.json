@@ -628,8 +628,8 @@
   {
     "name": "qqmusic",
     "type": "complete",
-    "author": "冷曦",
-    "description": "QQ音乐点歌与语音播放，支持个人扫码登录、绿钻账号池轮询及Markdown消息",
+    "author": "冷曦、24801816",
+    "description": "QQ音乐点歌与语音播放，支持个人扫码登录、绿钻账号池轮询",
     "version": "1.0.1",
     "category": "娱乐",
     "github": "https://github.com/lengxi-root/elaina-plugins-lengxi",
