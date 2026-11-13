@@ -169,22 +169,6 @@
     ]
   },
   {
-    "name": "音乐点歌",
-    "type": "single",
-    "author": "冷曦",
-    "description": "QQ音乐搜索与播放，支持序号选歌",
-    "version": "1.1.1",
-    "category": "娱乐",
-    "github": "https://github.com/lengxi-root/elaina-plugins-lengxi",
-    "branch": "main",
-    "path": "alone/音乐点歌.py",
-    "tags": [
-      "音乐",
-      "点歌",
-      "娱乐"
-    ]
-  },
-  {
     "name": "针对撤回",
     "type": "single",
     "author": "冷曦",
@@ -639,6 +623,24 @@
       "JSON",
       "工具",
       "web"
+    ]
+  },
+  {
+    "name": "qqmusic",
+    "type": "complete",
+    "author": "冷曦",
+    "description": "QQ音乐点歌与语音播放，支持个人扫码登录、绿钻账号池轮询及Markdown消息",
+    "version": "1.0.1",
+    "category": "娱乐",
+    "github": "https://github.com/lengxi-root/elaina-plugins-lengxi",
+    "branch": "main",
+    "path": "qqmusic",
+    "tags": [
+      "音乐",
+      "点歌",
+      "QQ音乐",
+      "扫码登录",
+      "娱乐"
     ]
   }
 ]
