@@ -432,7 +432,7 @@
     "type": "complete",
     "author": "乄杺",
     "description": "利用微信ClawBot实现管理框架机器人、查看机器人DAU数据、查看系统状态",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "category": "工具",
     "github": "https://github.com/linxi-root/elainabot-wechat-bot",
     "branch": "main",
